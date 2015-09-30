@@ -198,3 +198,4 @@ FakesAssemblies/
 App_Data/
 packages/
 !packages/repositories.config
+/TwitterBot/TwitterBot.config
