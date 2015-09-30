@@ -1,0 +1,24 @@
+﻿@model Search
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+<div>
+      @foreach (var item in Model.Statuses)
+      {
+        <p>
+            <div style="font-weight: bold">@@@item.User.ScreenNameResponse</div>
+            <div>@item.Text</div>
+        </p>
+      }
+</div>
+</body>
+</html>
