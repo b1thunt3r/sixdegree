@@ -1,4 +1,5 @@
 # sixdegree
+Trying out [LinqToTwitter](https://github.com/JoeMayo/LinqToTwitter/), will probably have some sort of six degree stuff in it later...
 
 ## TwitterBot.config
 Content of TwitterBot.config. Have excluded so that I don't check in my keys for Twitter.
