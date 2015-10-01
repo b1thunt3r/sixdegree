@@ -1,7 +1,8 @@
-﻿@model Search
+﻿@model TwitterContext
 
 @{
     Layout = null;
+    var cursor = -1L;
 }
 
 <!DOCTYPE html>
@@ -11,14 +12,23 @@
     <title>Test</title>
 </head>
 <body>
-<div>
-      @foreach (var item in Model.Statuses)
-      {
-        <p>
-            <div style="font-weight: bold">@@@item.User.ScreenNameResponse</div>
-            <div>@item.Text</div>
-        </p>
-      }
-</div>
+    <div>
+        <h2>Friends</h2>
+        <ul>
+            @do
+            {
+                var friends = Model.Friendship
+                .SingleOrDefault(f => f.Type == FriendshipType.FollowersList & f.ScreenName == "aschmach");
+
+                cursor = friends.CursorMovement.Next;
+
+                foreach (var item in friends.Users)
+                {
+                    <li>@item.ScreenNameResponse</li>
+                }
+
+            } while (cursor != 0);
+        </ul>
+    </div>
 </body>
 </html>

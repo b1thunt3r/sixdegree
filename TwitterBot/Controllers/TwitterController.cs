@@ -1,7 +1,7 @@
 ﻿using LinqToTwitter;
 using System.Configuration;
-using System.Linq;
 using System.Web.Mvc;
+using TwitterBot.Models.ViewModels;
 
 namespace TwitterBot.Controllers
 {
@@ -22,24 +22,18 @@ namespace TwitterBot.Controllers
             };
 
             var twitterCtx = new TwitterContext(auth);
+            var vm = new TwitterX(); ;
 
-            //var searchResponse =
-            //    (from search in twitterCtx.Search
-            //     where search.Type == SearchType.Search &&
-            //           search.Query == "#mono"
-            //     select search)
-            //    .SingleOrDefault();
-            var searchResponse = twitterCtx.Search
-                .SingleOrDefault(s => s.Type == SearchType.Search && s.Query == "#windows10");
+            //vm.Search = twitterCtx.Search
+            //    .SingleOrDefault(s => s.Type == SearchType.Search && s.Query == "#windows10");
 
-            //if (searchResponse != null && searchResponse.Statuses != null)
-            //    searchResponse.Statuses.ForEach(tweet =>
-            //        Console.WriteLine(
-            //            "User: {0}, Tweet: {1}",
-            //            tweet.User.ScreenNameResponse,
-            //            tweet.Text));
+            //vm.Friendship = twitterCtx.Friendship
+            //    .SingleOrDefault(f => f.Type == FriendshipType.FriendsList & f.ScreenName == "aschmach" && f.Count == 10000);
 
-            return View(searchResponse);
+            //vm.Followers = twitterCtx.Friendship
+            //    .SingleOrDefault(f => f.Type == FriendshipType.FollowersList & f.ScreenName == "aschmach" && f.Count == 10000);
+
+            return View(twitterCtx);
         }
     }
 }
