@@ -1,4 +1,4 @@
-﻿@model TwitterContext
+﻿@model TwitterX
 
 @{
     Layout = null;
@@ -15,20 +15,19 @@
     <div>
         <h2>Friends</h2>
         <ul>
-            @do
+            @foreach (var item in Model.Friendship.Users)
             {
-                var friends = Model.Friendship
-                .SingleOrDefault(f => f.Type == FriendshipType.FollowersList & f.ScreenName == "aschmach");
-
-                cursor = friends.CursorMovement.Next;
-
-                foreach (var item in friends.Users)
-                {
-                    <li>@item.ScreenNameResponse</li>
-                }
-
-            } while (cursor != 0);
+                <li>@@@item.ScreenNameResponse</li>
+            }
         </ul>
+        <h2>Followers</h2>
+        <ul>
+            @foreach (var item in Model.Followers.Users)
+            {
+                <li>@@@item.ScreenNameResponse</li>
+            }
+        </ul>
+
     </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 ﻿using LinqToTwitter;
 using System.Configuration;
+using System.Linq;
 using System.Web.Mvc;
 using TwitterBot.Models.ViewModels;
 
@@ -27,13 +28,13 @@ namespace TwitterBot.Controllers
             //vm.Search = twitterCtx.Search
             //    .SingleOrDefault(s => s.Type == SearchType.Search && s.Query == "#windows10");
 
-            //vm.Friendship = twitterCtx.Friendship
-            //    .SingleOrDefault(f => f.Type == FriendshipType.FriendsList & f.ScreenName == "aschmach" && f.Count == 10000);
+            vm.Friendship = twitterCtx.Friendship
+                .SingleOrDefault(f => f.Type == FriendshipType.FriendsList & f.ScreenName == "aschmach" && f.Count == 5000);
 
-            //vm.Followers = twitterCtx.Friendship
-            //    .SingleOrDefault(f => f.Type == FriendshipType.FollowersList & f.ScreenName == "aschmach" && f.Count == 10000);
+            vm.Followers = twitterCtx.Friendship
+                .SingleOrDefault(f => f.Type == FriendshipType.FollowersList & f.ScreenName == "aschmach" && f.Count == 5000);
 
-            return View(twitterCtx);
+            return View(vm);
         }
     }
 }
